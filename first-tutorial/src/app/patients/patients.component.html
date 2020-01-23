@@ -1,0 +1,24 @@
+<h2>Patients</h2>
+
+<div>
+  <label>Patient name:
+    <input #patientName />
+  </label>
+  <label>Patient age:
+    <input #patientAge />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(patientName.value, patientAge.value); patientName.value=''; patientAge.value=''">
+    add
+  </button>
+</div>
+
+<ul class="patients">
+  <li *ngFor="let patient of patients">
+    <a routerLink="/detail/{{patient.id}}">
+      <span class="badge">{{patient.id}}</span> {{patient.name}}, age {{patient.age}}
+    </a>
+    <button class="delete" title="delete patient"
+    (click)="delete(patient)">x</button>
+  </li>
+</ul>
