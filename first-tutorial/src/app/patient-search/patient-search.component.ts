@@ -15,7 +15,7 @@ import { PatientService } from '../patient.service';
   styleUrls: ['./patient-search.component.css']
 })
 export class PatientSearchComponent implements OnInit {
-  patient$: Observable<Patient[]>;
+  patients$: Observable<Patient[]>;
   private searchTerms = new Subject<string>();
 
   constructor(private patientService: PatientService) { }
@@ -26,7 +26,7 @@ export class PatientSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.patient$ = this.searchTerms.pipe(
+    this.patients$ = this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term
       debounceTime(300),
 
